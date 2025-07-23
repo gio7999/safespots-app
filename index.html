@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Safespots - Segnala e Consulta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Safespots - Segnala un problema, spazio o evento</h1>
+    <div id="map"></div>
+
+    <form id="reportForm">
+      <label for="tipoSegnalazione">Tipo segnalazione:</label>
+      <select id="tipoSegnalazione" required>
+        <option value="" disabled selected>Seleziona tipo</option>
+        <option value="problema">Problema</option>
+        <option value="spazio">Spazio Sicuro</option>
+        <option value="evento">Evento</option>
+      </select>
+
+      <div id="categoriaContainer" style="display:none;">
+        <label for="categoria">Categoria problema:</label>
+        <select id="categoria">
+          <option value="" disabled selected>Seleziona categoria</option>
+          <option value="Degrado">Degrado urbano</option>
+          <option value="Spaccio">Spaccio sospetto</option>
+          <option value="Illuminazione">Illuminazione insufficiente</option>
+          <option value="Proposta">Proposta miglioramento</option>
+        </select>
+      </div>
+
+      <label for="titolo">Titolo / Breve descrizione:</label>
+      <input type="text" id="titolo" maxlength="100" placeholder="Titolo o breve descrizione" required />
+
+      <div id="dataEventoContainer" style="display:none;">
+        <label for="dataEvento">Data e ora evento:</label>
+        <input type="datetime-local" id="dataEvento" />
+      </div>
+
+      <label>Posizione segnalazione:</label>
+      <button type="button" id="btnLocate">Usa geolocalizzazione</button>
+      <p>Oppure clicca sulla mappa per scegliere manualmente</p>
+      <p><strong>Coordinate selezionate:</strong> <span id="coordinates">Nessuna</span></p>
+
+      <button type="submit">Invia segnalazione</button>
+    </form>
+
+    <p id="status"></p>
+
+    <hr style="margin: 30px 0;">
+
+    <h2>Hai un suggerimento o un'idea?</h2>
+    <form id="suggestionForm">
+      <label for="suggerimento">Scrivi il tuo suggerimento:</label>
+      <textarea id="suggerimento" rows="4" placeholder="Inserisci la tua proposta o osservazione..." required></textarea>
+      <button type="submit">Invia suggerimento</button>
+    </form>
+
+    <p id="suggestionStatus"></p>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
